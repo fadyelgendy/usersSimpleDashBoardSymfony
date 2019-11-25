@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-3">
+            Users
+        </h1>
+        {% if(users) %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a href="./users/user/show/{{ user.id }}" class="btn btn-success mr-2 rounded">View</a>
+                        <a href="./users/user/update/{{ user.id }}" class="btn btn-primary mr-2 rounded">Update</a>
+                        <a href="./users/user/delete/{{ user.id }}" class="btn btn-danger mr-2 rounded">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p class="lead">No User In Database!!</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}

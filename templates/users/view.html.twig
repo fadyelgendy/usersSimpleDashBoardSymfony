@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ user.username }} {% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <img src="{{ asset('img/user-holder.png') }}"
+                     alt="User Holder Image">
+            </div>
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User Information: </th>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td>ID: </td>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Username: </td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>Username: </td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <a href="{{ path('user_list') }}" class="btn btn-dark">Back</a>
+                <a href="{{ path('update_user',{'id':user.id }) }}" class="btn btn-dark">Edit</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
